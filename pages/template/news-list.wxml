@@ -1,0 +1,16 @@
+<template name="newsListTemplate">
+
+  <block wx:for="{{viewDataList[view.key]}}" wx:key='news_{{index}}'>
+  <navigator url='/pages/news/detail?url={{item.url}}&title={{item.title}}&tags={{item.tagList}}'>
+  <view class="list-item">
+    <image src='{{item.imageList[0]}}' mode='aspectFill' lazy-load='true'></image>
+    <view class="list-item-content">
+      <view class='list-item-title yc-ellipsis text-line-2'>{{item.title}}</view>
+      <view class='list-item-desc yc-ellipsis text-line-2' wx:if='{{item.title.length<13}}'>{{item.desc}}</view>
+      <view class='list-item-time'>{{item.time}}</view>
+    </view>
+  </view>
+  </navigator>
+  </block>
+
+</template>

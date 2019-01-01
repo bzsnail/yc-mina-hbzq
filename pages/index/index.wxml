@@ -1,0 +1,65 @@
+<import src="../template/news-list.wxml" />
+
+<scroll-view
+    scroll-x="true"
+    scroll-with-animation="{{true}}"
+    scroll-into-view="{{'nav-' + currentIndex}}"
+    class="scroll-view-nav"
+>
+<block wx:for="{{viewList}}" wx:key='nav_{{index}}'>
+    <view
+      id="nav-{{index}}"
+      class="scroll-view-nav-item {{currentIndex == index ? 'active' : ''}}"
+      bindtap='toggleNav'
+    >
+      {{item.name}}
+    </view>
+</block>
+</scroll-view>
+
+<swiper
+    indicator-dots='{{false}}'
+    current='{{currentIndex}}'
+    duration='400'
+    skip-hidden-item-layout='{{true}}'
+    bindchange='swiperChangeFunc'
+    class="swiper-view"
+>
+  <block wx:for="{{viewList}}" wx:key='view_{{index}}' wx:for-item='view'>
+    <swiper-item>
+
+      <scroll-view
+          scroll-y="true"
+          scroll-with-animation="{{true}}"
+          class="scroll-view-page"
+          lower-threshold="200"
+          bindscrolltolower="scroll2Bottom"
+      >
+
+        <swiper
+          wx:if='{{view.key=="index"}}'
+          indicator-dots='{{false}}'
+          skip-hidden-item-layout='{{true}}'
+          autoplay='{{true}}'
+          circular='{{true}}'
+          class="swiper-banner"
+        >
+          <block wx:for="{{bannerList}}" wx:key='banner_{{index}}'>
+            <swiper-item>
+              <navigator url='/pages/news/detail?url={{item.url}}&title={{item.title}}'>
+              <image src='{{item.image}}' mode='aspectFill' lazy-load='true'></image>
+              <view class='title'>
+                <view class='bg'></view>
+                <view class='yc-ellipsis text-line-1'>{{item.title}}</view>
+              </view>
+              </navigator>
+            </swiper-item>
+          </block>
+        </swiper>
+        <template is="newsListTemplate" data="{{viewDataList, view}}"/>
+
+      </scroll-view>
+
+    </swiper-item>
+  </block>
+</swiper>

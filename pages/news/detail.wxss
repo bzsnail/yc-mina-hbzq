@@ -1,0 +1,40 @@
+.page {
+  padding-bottom:100rpx;
+  width: 100vw; min-height: 100vh;
+}
+.title {
+  padding: 25rpx;
+  font-size: 14pt;
+  font-weight: 450;
+}
+.time {
+  padding: 0 25rpx;
+  color: #888;
+}
+.copyright {
+  padding: 25rpx 0;
+  width: 100vw;
+  text-align: center;
+  color: #b2b2b2;
+  font-size: 10pt;
+}
+.tags {
+  padding: 25rpx;
+}
+.tags view {
+  margin: 0 25rpx 10rpx 0; padding: 6rpx 15rpx;
+  display: inline-block;
+  font-size: 9pt;
+  color: #888;
+  background: #eee;
+}
+.rich-text {
+  width: 700rpx; min-height: 700rpx;
+  padding: 25rpx;
+  font-size: 12pt;
+}
+.rich-text view {
+  margin: 25rpx 0;
+  line-height: 2rem;
+  text-indent: 2em;
+}

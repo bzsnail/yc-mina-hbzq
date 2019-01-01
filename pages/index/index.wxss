@@ -1,0 +1,60 @@
+@import "../template/news-list.wxss";
+
+.scroll-view-nav {
+  width: 100vw; line-height: 6vh;
+  background: #fff;
+  white-space: nowrap;
+  position: fixed;
+  z-index: 1000;
+}
+.scroll-view-nav .scroll-view-nav-item {
+  margin: 0 15rpx; padding: 0 15rpx;
+  display: inline-block;
+}
+.scroll-view-nav-item.active {
+  color: #16b13a;
+  border-bottom: 2px solid #16b13a;
+}
+
+
+.swiper-view {
+  padding-top: 6vh;
+  width: 100vw; height: 94vh;
+}
+.swiper-view>swiper-item {
+  height: 100%;
+}
+
+.scroll-view-page {
+  height: 100%;
+}
+
+.swiper-banner,
+.swiper-banner>swiper-item,
+.swiper-banner image {
+  width: 100vw; height: 50vw;
+}
+
+.swiper-banner>swiper-item {
+  position: relative;
+}
+.swiper-banner .title {
+  width: 100vw; height: 6vh;
+  position: absolute;
+  bottom: 0; z-index: 10;
+}
+.swiper-banner .title .bg {
+  width: 100vw; height: 6vh;
+  background: #353535;
+  opacity: .7;
+}
+.swiper-banner .title view:last-child {
+  padding: 0 5vw;
+  width: 90vw; line-height: 6vh;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  top: 0; left: 0; z-index: 20;
+}
+
+
