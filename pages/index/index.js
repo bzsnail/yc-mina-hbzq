@@ -21,7 +21,6 @@ Page({
     })
   },
   swiperChangeFunc(event) {
-    console.log(event)
     let current = event.detail.current
     this.setData({
       currentIndex: current
