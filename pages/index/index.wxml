@@ -57,6 +57,7 @@
           </block>
         </swiper>
         <template is="newsListTemplate" data="{{viewDataList, view}}"/>
+        <yc-empty-view show='{{viewDataList[view.key].length==0 && !viewPageList[view.key].loading}}'></yc-empty-view>
 
       </scroll-view>
 

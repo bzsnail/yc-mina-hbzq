@@ -114,8 +114,11 @@ Page({
         pno: _pageInfo.pno
       },
     }).then(res => {
+      if (_viewDataList[key] == undefined) {
+        _viewDataList[key] = []
+      }
       var list = res.result;
-      _viewDataList[key] = _pageInfo.pno == 1 ? list : that.data.viewDataList[key].concat(list)
+      _viewDataList[key] = _pageInfo.pno == 1 ? list : _viewDataList[key].concat(list)
 
 
       let _loadAll = false
