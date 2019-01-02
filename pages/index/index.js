@@ -41,7 +41,7 @@ Page({
 
     let _viewDataList = this.data.viewDataList
     let _viewPageList = this.data.viewPageList
-    if (_viewDataList[key] == undefined) {
+    if (_viewDataList[key] == undefined || _viewDataList[key].length == 0) {
 
       wx.showLoading({
         title: '正在加载…'
