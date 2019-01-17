@@ -42,7 +42,8 @@ const getNewsList = (str) => {
 
   let list = []
 
-  const reg = /\<article[\s\S]*?\<header\>[\s\S]*?\<h2\>\<a[\s\S]*?href="(.*?)"[\s\S]*?\>(.*?)\<\/a\>\<\/h2\>[\s\S]*?\<\/header\>[\s\S]*?\<p class="text-muted time"\>(.*?)\<\/p\>[\s\S]*?\<p class="focus"\>([\s\S]*?)\<\/p\>[\s\S]*?\<p class="note"\>([\s\S]*?)\<\/p\>[\s\S]*?\<p class="text-muted views"\>([\s\S]*?)\<\/p\>[\s\S]*?\<\/article\>[\s\S]*?/igm;
+  // const reg = /\<article[\s\S]*?\<header\>[\s\S]*?\<h2\>\<a[\s\S]*?href="(.*?)"[\s\S]*?\>(.*?)\<\/a\>\<\/h2\>[\s\S]*?\<\/header\>[\s\S]*?\<p class="text-muted time"\>(.*?)\<\/p\>[\s\S]*?\<p class="focus"\>([\s\S]*?)\<\/p\>[\s\S]*?\<p class="note"\>([\s\S]*?)\<\/p\>[\s\S]*?\<p class="text-muted views"\>([\s\S]*?)\<\/p\>[\s\S]*?\<\/article\>[\s\S]*?/igm;
+  const reg = /\<article[\s\S]*?\<header\>[\s\S]*?\<h2\>\<a[\s\S]*?href="(.*?)"[\s\S]*?\>(.*?)\<\/a\>\<\/h2\>[\s\S]*?\<\/header\>[\s\S]*?\<p class="text-muted time"\>(.*?)\<\/p\>([\s\S]*?)\<p class="note"\>([\s\S]*?)\<\/p\>[\s\S]*?\<p class="text-muted views"\>([\s\S]*?)\<\/p\>[\s\S]*?\<\/article\>[\s\S]*?/igm;
 
   var r = ''
   while (r = reg.exec(str)) {
@@ -75,6 +76,10 @@ const getImageList = (str) => {
   var r = ''
   while (r = reg.exec(str)) {
     list.push(r[1].replace('-120x80', ''))
+  }
+
+  if(list.length == 0) {
+    list.push("http://www.hebeizuqiu.net/wp-content/uploads/sites/1/2018/01/logo1.png")
   }
 
   return list

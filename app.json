@@ -13,7 +13,7 @@
     "navigationBarTextStyle": "#fff",
     "backgroundColorTop": "#f8f8f8",
     "backgroundColorBottom": "#f8f8f8",
-    "onReachBottomDistance": 300
+    "onReachBottomDistance": 400
   },
   "cloud": true,
   "networkTimeout": {

@@ -58,8 +58,11 @@ const dealNewsContent = function (str) {
     .replace(/(\<p\>)([\s\S]*?)(\<img src=".*" \/\>)([\s\S]*?)(\<\/p\>)/igm, '$1$2$5$3$1$4$5')
     .replace(/\<p\>&nbsp;\<\/p\>/igm, '')
     .replace(/\<p\>\<\/p\>/igm, '')
+    .replace(/\<br \/\>/igm, '')
+    .replace(/\<br\/\>/igm, '')
     .replace(/\<strong\>(.*?)\<\/strong\>/igm, '$1')
-    .replace(/\<p\>(.*?)\<\/p\>/igm, '<YC>text_$1</YC>')
+    .replace(/\<a[\s\S]*?\>(.*?)\<\/a\>/igm, '$1')
+    .replace(/\<p\>([\s\S]*?)\<\/p\>/igm, '<YC>text_$1</YC>')
     .replace(/\<img src="(.*?)" \/\>/igm, '<YC>image_$1</YC>')
 
     return cont
@@ -72,7 +75,7 @@ const getContentObj = function (str) {
 
   let list = []
 
-  const reg = /\<YC\>(.*?)\<\/YC\>/igm;
+  const reg = /\<YC\>([\s\S]*?)\<\/YC\>/igm;
 
   var r = ''
   while (r = reg.exec(str)) {

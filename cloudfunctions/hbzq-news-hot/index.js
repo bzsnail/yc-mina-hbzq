@@ -34,10 +34,14 @@ const getNewsList = function (str) {
   var r = ''
   while (r = reg.exec(str)) {
 
+    if (r[2] == 'http://www.hebeizuqiu.net/wp-content/themes/xiu/images/thumbnail.png') {
+      continue
+    }
+
     list.push({
       url: r[1],
       image: r[2].replace('-120x80', ''),
-      title: r[3],
+      title: r[3].replace(/\<.*?\>/igm, '').replace(/\<\/.*?\>/igm, ''),
     })
   }
 
