@@ -1,4 +1,4 @@
-page { margin: 0; padding: 0; color: #353535; background: #fdfdfd; font-size: 11pt; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+page { margin: 0; padding: 0; color: #353535; background: #f8f8f8; font-size: 11pt; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
 .line-m { width: 100vw; height: 5vw; background-color: #f8f8f8; }
 .line-m.min { height: 2vw; }

@@ -2,7 +2,8 @@
 Page({
   data: {
     news: {},
-    tagList: []
+    tagList: [],
+    imgList: []
   },
   onLoad: function (options) {
     let tags = options.tags
@@ -39,6 +40,13 @@ Page({
       this.setData({
         news: news,
       })
+
+      news.content.forEach(v => {
+        if(v.type == 'image') {
+          that.data.imgList.push(v.value)
+        }
+      });
+
       wx.hideLoading()
     }).catch(err => {
       // handle error
@@ -46,6 +54,19 @@ Page({
       wx.hideLoading()
     })
 
+  },
+  previewImage: function (event) {
+    let src = event.currentTarget.dataset.src;//获取data-src
+    let imgList = this.data.imgList
+    if(imgList.length == 0) {
+      imgList.push(src)
+    }
+
+    var that = this
+    wx.previewImage({
+      current: src,
+      urls: imgList
+    })
   },
   onShareAppMessage: function () {
 

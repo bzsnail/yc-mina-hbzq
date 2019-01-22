@@ -12,8 +12,8 @@
   display: inline-block;
 }
 .scroll-view-nav-item.active {
-  color: #16b13a;
-  border-bottom: 2px solid #16b13a;
+  color: #195db0;
+  border-bottom: 2px solid #195db0;
 }
 
 
