@@ -6,8 +6,8 @@
     <image src='{{item.thumb}}' mode='aspectFill' lazy-load='true'></image>
     <view class="list-item-content">
       <view class='list-item-title yc-ellipsis text-line-2'>{{item.title}}</view>
-      <view class='list-item-account'>{{item.official_account}} {{' ' + item.comments_total + '评论'}}</view>
-      <!-- <view class='list-item-time'>{{item.display_time}}</view> -->
+      <view wx:if='{{item.official_account == "" || item.official_account == null }}' class='list-item-account'><text>{{item.time}}</text><text>{{item.comments_total + '评论'}}</text></view>
+      <view wx:else class='list-item-account'><text>{{item.official_account}}</text><text>{{item.comments_total + '评论'}}</text></view>
     </view>
   </view>
   </navigator>

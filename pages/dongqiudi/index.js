@@ -1,3 +1,4 @@
+const dateUtil = require('../../utils/date.js')
 
 Page({
   data: {
@@ -62,7 +63,12 @@ Page({
       if (_viewDataList[key] == undefined) {
         _viewDataList[key] = []
       }
-      var list = res.result;
+      var list = [];
+      var now = new Date()
+      res.result.forEach(v => {
+        v.time = dateUtil.formatDate(new Date(v.display_time), now)
+        list.push(v)
+      });
       _viewDataList[key] = _pageInfo.pno == 1 ? list : _viewDataList[key].concat(list)
 
       let _loadAll = false
@@ -83,8 +89,6 @@ Page({
         viewDataList: _viewDataList,
         viewPageList: _viewPageList,
       })
-
-      console.log(that.data)
 
       wx.hideNavigationBarLoading()
       wx.stopPullDownRefresh()
