@@ -1,5 +1,3 @@
-const dateUtil = require('../../utils/date.js')
-
 Page({
   data: {
     viewDataList: {},
@@ -64,9 +62,8 @@ Page({
         _viewDataList[key] = []
       }
       var list = [];
-      var now = new Date()
       res.result.forEach(v => {
-        v.time = dateUtil.formatDate(new Date(v.display_time), now)
+        v.time = v.display_time.substr(5, 11)
         list.push(v)
       });
       _viewDataList[key] = _pageInfo.pno == 1 ? list : _viewDataList[key].concat(list)
