@@ -1,0 +1,4 @@
+<import src="../template/dongqiudi-news-list.wxml" />
+
+<template is="dongqiudiNewsListTemplate" data="{{viewDataList, key}}"/>
+<yc-empty-view show='{{viewDataList[key].length==0 && !viewPageList[key].loading}}'></yc-empty-view>

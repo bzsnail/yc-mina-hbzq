@@ -9,8 +9,6 @@ exports.main = async (event, context) => {
 
   let { requestUrl } = event
 
-  requestUrl = defaultValue(requestUrl, 'http://www.hebeizuqiu.net/news/30940.html')
-
   var url = requestUrl
   console.log(url)
 
@@ -30,18 +28,16 @@ exports.main = async (event, context) => {
 }
 
 /**
- * 从文本中过滤出新闻
- */
-const getNewsDetail = (str) => {
+     * 从文本中过滤出新闻
+     */
+const getNewsDetail = function (str) {
 
-  const reg = /\<h1 class="article-title"\>\<a[\s\S]*?\>(.+?)\<\/a\>\<\/h1\>[\s\S]*?\<ul class="article-meta"\>[\s\S]*?\<li\>(.+?)\<\/li\>[\s\S]*?\<article class="article-content"\>([\s\S]*?)\<p class="post-copyright"\>/igm;
+  const reg = /\<div class="detail"\>[\s\S]*?\<div\>([\s\S]*?)\<\/div\>[\s\S]*?\<ul class="sourse"\>/igm;
 
   let r = reg.exec(str)
 
   let news = {
-    title: r[1],
-    time: r[2],
-    content: getContentObj(dealNewsContent(r[3]))
+    content: getContentObj(dealNewsContent(r[1]))
   }
 
   return news
@@ -67,7 +63,7 @@ const dealNewsContent = function (str) {
     .replace(/\<p\>([\s\S]*?)\<\/p\>/igm, '<YC>text_$1</YC>')
     .replace(/\<img src="(.*?)" \/\>/igm, '<YC>image_$1</YC>')
 
-    return cont
+  return cont
 }
 
 /**
@@ -93,7 +89,6 @@ const getContentObj = function (str) {
   }
   return list
 }
-
 /**
  * 处理默认值
  */

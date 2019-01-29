@@ -1,0 +1,16 @@
+<template name="dongqiudiNewsListTemplate">
+
+  <block wx:for="{{viewDataList[key]}}" wx:key='news_{{index}}'>
+  <navigator url='/pages/dongqiudi/detail?url={{item.web_url}}&title={{item.title}}&display_time={{item.display_time}}&official_account={{item.official_account}}&web_url={{item.web_url}}'>
+  <view class="list-item">
+    <image src='{{item.thumb}}' mode='aspectFill' lazy-load='true'></image>
+    <view class="list-item-content">
+      <view class='list-item-title yc-ellipsis text-line-2'>{{item.title}}</view>
+      <view class='list-item-account'>{{item.official_account}} {{' ' + item.comments_total + '评论'}}</view>
+      <!-- <view class='list-item-time'>{{item.display_time}}</view> -->
+    </view>
+  </view>
+  </navigator>
+  </block>
+
+</template>

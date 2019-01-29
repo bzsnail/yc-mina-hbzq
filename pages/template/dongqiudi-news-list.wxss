@@ -15,13 +15,11 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.list-item-desc {
+.list-item-title {
   line-height: 1.5em;
   margin-bottom: 30rpx;
-  font-size: 10pt;
-  color: #888;
 }
-.list-item-time {
+.list-item-account {
   line-height: 1rem;
   font-size: 10pt;
   color: #888;

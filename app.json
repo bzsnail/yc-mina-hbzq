@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/news/detail",
+    "pages/dongqiudi/index",
+    "pages/dongqiudi/detail",
     "pages/personal/index",
     "pages/personal/about"
   ],
@@ -16,6 +18,21 @@
     "onReachBottomDistance": 400
   },
   "cloud": true,
+  "tabBar": {
+    "borderStyle": "black",
+    "selectedColor": "#06a855",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "河北"
+      },
+      {
+        "pagePath": "pages/dongqiudi/index",
+        "text": "世界"
+      }
+    ]
+  },
   "networkTimeout": {
     "request": 20000,
     "downloadFile": 10000
