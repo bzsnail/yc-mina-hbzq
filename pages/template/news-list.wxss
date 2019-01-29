@@ -25,4 +25,6 @@
   line-height: 1rem;
   font-size: 10pt;
   color: #888;
+  display: flex;
+  justify-content: space-between;
 }

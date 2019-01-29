@@ -7,7 +7,7 @@
     <view class="list-item-content">
       <view class='list-item-title yc-ellipsis text-line-2'>{{item.title}}</view>
       <view class='list-item-desc yc-ellipsis text-line-2' wx:if='{{item.title.length<16}}'>{{item.desc}}</view>
-      <view class='list-item-time'>{{item.time}}</view>
+      <view class='list-item-time'><text>{{item.author}}</text><text>{{item.time}}</text></view>
     </view>
   </view>
   </navigator>

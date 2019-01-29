@@ -50,11 +50,13 @@ const getNewsList = (str) => {
 
     let imageList = getImageList(r[4])
     let tagList = getTagList(r[6])
+    let authorTime = r[3].split('发布于')
 
     list.push({
       url: r[1],
       title: r[2],
-      time: r[3],
+      author: authorTime[0].trim(),
+      time: authorTime[1].trim(),
       imageList: imageList,
       desc: r[5].trim(),
       tagList: tagList
