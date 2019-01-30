@@ -4,8 +4,10 @@
 
   <view class="rich-text">
   <block wx:for="{{news.content}}" wx:key='cont_{{index}}'>
-    <view wx-if="{{item.type=='text'}}">{{item.value}}</view>
-    <image wx-if="{{item.type=='image'}}" src="{{item.value}}" mode="widthFix" lazy-load='true' bindtap='previewImage' data-src='{{item.value}}'></image>
+    <image wx:if="{{item.type=='image'}}" src="{{item.value}}" mode="widthFix" lazy-load='true' bindtap='previewImage' data-src='{{item.value}}'></image>
+    <video wx:elif="{{item.type=='video'}}" src="{{item.value}}"></video>
+    <view wx:elif="{{item.type=='text'}}">{{item.value}}</view>
+    <view wx:elif="{{item.type=='H2'}}" class="H2">{{item.value}}</view>
   </block>
   </view>
 

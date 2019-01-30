@@ -37,6 +37,16 @@
   line-height: 2rem;
   text-indent: 2em;
 }
+.rich-text view.H2 {
+  padding-left: 10px;
+  line-height: 1rem;
+  font-weight: bold;
+  text-indent: 0;
+  border-left: 3px solid #16b13a;
+}
 .rich-text image {
   min-height: 300rpx;
+}
+.rich-text video {
+  width: 100%;
 }

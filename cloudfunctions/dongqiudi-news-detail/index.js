@@ -32,7 +32,7 @@ exports.main = async (event, context) => {
      */
 const getNewsDetail = function (str) {
 
-  const reg = /\<div class="detail"\>[\s\S]*?\<div\>([\s\S]*?)\<\/div\>[\s\S]*?\<ul class="sourse"\>/igm;
+  const reg = /\<div class="detail"\>[\s\S]*?\<div\>([\s\S]*)\<\/div\>[\s\S]*?\<ul class="sourse"\>/igm;
 
   let r = reg.exec(str)
 
@@ -52,16 +52,28 @@ const dealNewsContent = function (str) {
 
   cont = cont.replace(/\<\/p\>/igm, '</p>\n')
     .replace(/\<img[\s\S]*?src="(.+?)"[\s\S]*?\/\>/igm, '<img src="$1" />')
+    .replace(/\<strong\>(.*?)\<\/strong\>/igm, '$1')
+    .replace(/\<span[\s\S]*?\>(.*?)\<\/span\>/igm, '$1')
+    .replace(/\<p\><div class="video"[\s\S]*?site="qiniu"[\s\S]*?src="(.+?)"[\s\S]*?\>\<\/div\>[\s\S]*?\<\/p\>/igm, '<p><video src="$1" /></p>')
+    .replace(/\<p\><div class="video"[\s\S]*?site="youku"[\s\S]*?thumb="(.+?)"[\s\S]*?\>\<\/div\>[\s\S]*?\<\/p\>/igm, '<p><img src="$1" /></p>')
     .replace(/(\<p\>)([\s\S]*?)(\<img src=".*" \/\>)([\s\S]*?)(\<\/p\>)/igm, '$1$2$5$3$1$4$5')
+    .replace(/(\<p\>)(\<video src=".*" \/\>)(\<\/p\>)/igm, '$2')
+    .replace(/\<p\>\<div[\s\S]*?class="grade"[\s\S]*?\>\<\/div\>[\s\S]*?\<\/p\>/igm, '')
+    .replace(/\<strong\>(.*?)\<\/strong\>/igm, '$1')
+    .replace(/\<span[\s\S]*?\>(.*?)\<\/span\>/igm, '$1')
     .replace(/\<p\>&nbsp;\<\/p\>/igm, '')
     .replace(/\<p\>\<\/p\>/igm, '')
     .replace(/\<br \/\>/igm, '')
     .replace(/\<br\/\>/igm, '')
-    .replace(/\<strong\>(.*?)\<\/strong\>/igm, '$1')
-    .replace(/\<span[\s\S]*?\>(.*?)\<\/span\>/igm, '$1')
     .replace(/\<a[\s\S]*?\>(.*?)\<\/a\>/igm, '$1')
     .replace(/\<p\>([\s\S]*?)\<\/p\>/igm, '<YC>text_$1</YC>')
     .replace(/\<img src="(.*?)" \/\>/igm, '<YC>image_$1</YC>')
+    .replace(/\<video src="(.*?)" \/\>/igm, '<YC>video_$1</YC>')
+    .replace(/\<h1\>([\s\S]*?)\<\/h1\>/igm, '<YC>H1_$1</YC>')
+    .replace(/\<h2\>([\s\S]*?)\<\/h2\>/igm, '<YC>H2_$1</YC>')
+    .replace(/\<h3\>([\s\S]*?)\<\/h3\>/igm, '<YC>H3_$1</YC>')
+    .replace(/\<h4\>([\s\S]*?)\<\/h4\>/igm, '<YC>H4_$1</YC>')
+    .replace(/\<h5\>([\s\S]*?)\<\/h5\>/igm, '<YC>H5_$1</YC>')
 
   return cont
 }
