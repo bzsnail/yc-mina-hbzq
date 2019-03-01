@@ -133,6 +133,10 @@ Page({
     this.getData(key)
   },
   onShareAppMessage: function () {
-
+    let that = this
+    return {
+      title: '一个安心做内容的足球自媒体',
+      path: '/pages/dongqiudi/index'
+    }
   }
 })
