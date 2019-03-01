@@ -12,7 +12,7 @@
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#195db0",
     "navigationBarTitleText": "河北足球资讯",
-    "navigationBarTextStyle": "#fff",
+    "navigationBarTextStyle": "white",
     "backgroundColorTop": "#f8f8f8",
     "backgroundColorBottom": "#f8f8f8",
     "onReachBottomDistance": 400
@@ -20,16 +20,20 @@
   "cloud": true,
   "tabBar": {
     "borderStyle": "black",
-    "selectedColor": "#06a855",
+    "selectedColor": "#195db0",
     "backgroundColor": "#fff",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "河北"
+        "text": "河北资讯",
+        "iconPath": "images/tabbar/hebei.png",
+        "selectedIconPath": "images/tabbar/hebei-on.png"
       },
       {
         "pagePath": "pages/dongqiudi/index",
-        "text": "世界"
+        "text": "天下足球",
+        "iconPath": "images/tabbar/world.png",
+        "selectedIconPath": "images/tabbar/world-on.png"
       }
     ]
   },

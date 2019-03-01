@@ -1,6 +1,7 @@
 
 Page({
   data: {
+    url: '',
     news: {},
     tagList: [],
     imgList: []
@@ -23,6 +24,9 @@ Page({
     }
 
     let url = options.url
+    this.setData({
+      url: url
+    })
     this.getData(url)
   },
   getData(url) {
@@ -70,5 +74,11 @@ Page({
   },
   onShareAppMessage: function () {
 
+    let that = this
+    return {
+      title: '一个安心做内容的足球自媒体',
+      path: '/pages/news/detail?url=' + that.data.url + '&title=' + that.data.news.title + '&tags='
+    }
   }
+
 })

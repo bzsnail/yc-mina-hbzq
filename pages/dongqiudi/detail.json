@@ -1,3 +1,6 @@
 {
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "天下足球",
+  "navigationBarTextStyle": "black",
   "usingComponents": {}
 }

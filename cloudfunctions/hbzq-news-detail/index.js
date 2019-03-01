@@ -56,16 +56,20 @@ const dealNewsContent = function (str) {
 
   cont = cont.replace(/\<\/p\>/igm, '</p>\n')
     .replace(/\<img[\s\S]*?src="(.+?)"[\s\S]*?\/\>/igm, '<img src="$1" />')
+    .replace(/\<strong\>(.*?)\<\/strong\>/igm, '$1')
+    .replace(/\<span[\s\S]*?\>(.*?)\<\/span\>/igm, '$1')
     .replace(/(\<p\>)([\s\S]*?)(\<img src=".*" \/\>)([\s\S]*?)(\<\/p\>)/igm, '$1$2$5$3$1$4$5')
+    .replace(/\<strong\>(.*?)\<\/strong\>/igm, '$1')
+    .replace(/\<span[\s\S]*?\>(.*?)\<\/span\>/igm, '$1')
     .replace(/\<p\>&nbsp;\<\/p\>/igm, '')
     .replace(/\<p\>\<\/p\>/igm, '')
     .replace(/\<br \/\>/igm, '')
     .replace(/\<br\/\>/igm, '')
-    .replace(/\<strong\>(.*?)\<\/strong\>/igm, '$1')
-    .replace(/\<span[\s\S]*?\>(.*?)\<\/span\>/igm, '$1')
     .replace(/\<a[\s\S]*?\>(.*?)\<\/a\>/igm, '$1')
     .replace(/\<p\>([\s\S]*?)\<\/p\>/igm, '<YC>text_$1</YC>')
     .replace(/\<img src="(.*?)" \/\>/igm, '<YC>image_$1</YC>')
+    .replace(/\<video src="(.*?)" \/\>/igm, '<YC>video_$1</YC>')
+    .replace(/\<h2\>([\s\S]*?)\<\/h2\>/igm, '<YC>H2_$1</YC>')
 
     return cont
 }

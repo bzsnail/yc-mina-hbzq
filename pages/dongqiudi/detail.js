@@ -72,6 +72,12 @@ Page({
     })
   },
   onShareAppMessage: function () {
-
+    
+    let that = this
+    return {
+      title: '一个安心做内容的足球自媒体',
+      path: '/pages/dongqiudi/detail?url=' + that.data.news.web_url + '&title=' + that.data.news.title + '&display_time=' + that.data.news.display_time + '&official_account=' + that.data.news.official_account + '&web_url=' + that.data.news.web_url,
+    }
   }
+
 })
