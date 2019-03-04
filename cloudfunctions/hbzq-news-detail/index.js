@@ -41,7 +41,7 @@ const getNewsDetail = (str) => {
   let news = {
     title: r[1],
     time: r[2],
-    content: getContentObj(dealNewsContent(r[3]))
+    content: getContentObj2(dealNewsContent2(r[3]))
   }
 
   return news
@@ -95,6 +95,70 @@ const getContentObj = function (str) {
     })
 
   }
+  return list
+}
+
+/**
+ * 处理文章内容，替换图片和文本标签
+ */
+const dealNewsContent2 = function (str) {
+
+  let cont = str
+
+  cont = cont.replace(/\<\/p\>/igm, '</p>\n')
+    .replace(/\<\/div\>/igm, '</div>\n')
+    .replace(/\<p[\s\S]*?\>/igm, '<p>')
+    .replace(/\<div[\s\S]*?\>/igm, '<div>')
+    .replace(/\<\!--[\s\S]*?--\>/igm, '')
+    .replace(/\<img[\s\S]*?src="(.+?)"[\s\S]*?\/\>/igm, '<img src="$1" />')
+    .replace(/\<strong\>(.*?)\<\/strong\>/igm, '$1')
+    .replace(/\<span[\s\S]*?\>(.*?)\<\/span\>/igm, '$1')
+    .replace(/\<p\>([\s\S]*?)(\<img src=".*" \/\>)([\s\S]*?)\<\/p\>/igm, '<p>$1</p>$2<p>$3</p>')
+    .replace(/\<strong\>(.*?)\<\/strong\>/igm, '$1')
+    .replace(/\<span[\s\S]*?\>(.*?)\<\/span\>/igm, '$1')
+    .replace(/\<p\>&nbsp;\<\/p\>/igm, '')
+    .replace(/\<p\>\<\/p\>/igm, '')
+    .replace(/\<br \/\>/igm, '<YC>text_')
+    .replace(/\<br\/\>/igm, '<YC>text_')
+    .replace(/\<a[\s\S]*?\>(.*?)\<\/a\>/igm, '$1')
+    .replace(/\<img src="(.*?)" \/\>/igm, '<YC>image_$1<YC>text_')
+    .replace(/\<video src="(.*?)" \/\>/igm, '<YC>video_$1<YC>text_')
+    .replace(/\<h2\>([\s\S]*?)\<\/h2\>/igm, '<YC>H2_$1<YC>text_')
+    .replace(/\<p\>([\s\S]*?)\<\/p\>/igm, '<YC>text_$1<YC>text_')
+    .replace(/\<div\>([\s\S]*?)\<\/div\>/igm, '<YC>text_$1<YC>text_')
+
+  return cont
+}
+
+/**
+ * 从文本中过滤出图片
+ */
+const getContentObj2 = function (str) {
+
+  let list = []
+
+  let array = str.split('<YC>')
+
+  for (let j = 0; j < array.length; j++) {
+    if (array[j].trim().length == 0) {
+      continue
+    }
+
+    let s = array[j].trim()
+    let i = s.indexOf('_')
+
+    if (i > -1) {
+      let v = s.substr(i + 1).trim()
+
+      if (v != '' && v != undefined) {
+        list.push({
+          "type": s.substring(0, i),
+          "value": v
+        })
+      }
+    }
+  }
+
   return list
 }
 
